@@ -9,8 +9,8 @@ class Command(BaseCommand):
     help = 'Fetch crash data from NYC Open Data API'
     
     def add_arguments(self, parser):
-        parser.add_argument('--limit', type=int, default=1000, help='Records per batch')
-        parser.add_argument('--max-records', type=int, default=5000, help='Max total records')
+        parser.add_argument('--limit', type=int, default=2000, help='Records per batch')
+        parser.add_argument('--max-records', type=int, default=50000, help='Max total records')
         parser.add_argument('--api-key-id', type=str, help='Socrata API Key ID')
         parser.add_argument('--api-key-secret', type=str, help='Socrata API Key Secret')
     
@@ -36,9 +36,9 @@ class Command(BaseCommand):
         # Fetch by date ranges to avoid pagination issues
         from datetime import datetime, timedelta
         
-        # Start from a specific date (e.g., 2021-01-01)
-        start_date = datetime(2021, 1, 1)
-        end_date = start_date + timedelta(days=30)  # 30-day chunks
+        # Start from a more recent date to get comprehensive recent data
+        start_date = datetime(2022, 1, 1)
+        end_date = start_date + timedelta(days=60)  # 60-day chunks for faster processing
         
         total_fetched = 0
         

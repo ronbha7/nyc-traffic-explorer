@@ -18,7 +18,12 @@ class CrashViewSet(viewsets.ReadOnlyModelViewSet):
             'borough': c.borough,
             'number_of_persons_injured': c.number_of_persons_injured,
             'number_of_persons_killed': c.number_of_persons_killed,
-            'total_severity': c.total_severity
+            'total_severity': c.total_severity,
+            'vehicle_type_code1': c.vehicle_type_code1,
+            'vehicle_type_code2': c.vehicle_type_code2,
+            'vehicle_type_code_3': c.vehicle_type_code_3,
+            'vehicle_type_code_4': c.vehicle_type_code_4,
+            'vehicle_type_code_5': c.vehicle_type_code_5
         } for c in crashes])
     
     def retrieve(self, request, pk=None):
